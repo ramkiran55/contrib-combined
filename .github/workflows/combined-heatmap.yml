@@ -1,9 +1,14 @@
 name: Build Combined Contributions Heatmap
 
 on:
+  workflow_dispatch: {}            # run manually from the Actions tab
+  push:                            # run on any change to these files
+    branches: [ main, master ]
+    paths:
+      - ".github/workflows/combined-heatmap.yml"
+      - "scripts/**"
   schedule:
-    - cron: "23 2 * * *"  # Daily at 02:23 UTC
-  workflow_dispatch: {}
+    - cron: "23 2 * * *"           # daily at 02:23 UTC
 
 jobs:
   build:
